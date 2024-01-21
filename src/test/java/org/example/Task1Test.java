@@ -40,7 +40,7 @@ class Task1Test {
         assertEquals(15.5, t1.median(testArray));
 
         testArray = new double[]{5.1234, 10, 15, 15.4, 23, 24.5, 32.12, 43.1, 100.2, 432};
-        assertEquals(23.75, t1.mean(testArray));
+        assertEquals(23.75, t1.median(testArray));
     }
 
     @Test
@@ -56,7 +56,7 @@ class Task1Test {
         assertEquals(268, t1.sum(testArray));
 
         testArray = new double[]{5.1234, 10, 15, 15.4, 23, 24.5, 32.12, 43.1, 100.2, 432};
-        assertEquals(700.4434, t1.mean(testArray));
+        assertEquals(700.4434, t1.sum(testArray));
     }
 
     @Test
@@ -72,7 +72,7 @@ class Task1Test {
         assertEquals(5.1173, t1.standardDeviation(testArray));
 
         testArray = new double[]{5.1234, 10, 15, 15.4, 23, 24.5, 32.12, 43.1, 100.2, 432};
-        assertEquals(123.3729, t1.mean(testArray));
+        assertEquals(123.3729, t1.standardDeviation(testArray));
     }
 
     @Test
@@ -88,7 +88,7 @@ class Task1Test {
         assertEquals(13, t1.firstQuartile(testArray));
 
         testArray = new double[]{5.1234, 10, 15, 15.4, 23, 24.5, 32.12, 43.1, 100.2, 432};
-        assertEquals(15, t1.mean(testArray));
+        assertEquals(15, t1.firstQuartile(testArray));
     }
 
     @Test
@@ -104,7 +104,7 @@ class Task1Test {
         assertEquals(22.5, t1.thirdQuartile(testArray));
 
         testArray = new double[]{5.1234, 10, 15, 15.4, 23, 24.5, 32.12, 43.1, 100.2, 432};
-        assertEquals(43.1, t1.mean(testArray));
+        assertEquals(43.1, t1.thirdQuartile(testArray));
     }
 
     private double[] anyValidValues() {
