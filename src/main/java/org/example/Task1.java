@@ -10,7 +10,16 @@ import java.text.DecimalFormat;
 public class Task1 {
 
     // TODO
-    public double mean(double[] values) {
+
+    void stringInvestigation() {
+        String str1 = "Hello";
+        String str2 = str1;
+        str2.replace('l', 'q');
+        System.out.println(str1);
+        System.out.println(str2);
+    }
+    public double mean(double[] values)
+    {
         if (values == null || values.length == 0) {
             throw new IllegalArgumentException("Empty values");
         } else {
@@ -21,9 +30,7 @@ public class Task1 {
     // TODO
     public double median(double[] values)
     {
-
         extracted(values);
-
         double[] sortedArray = Arrays.stream(values).sorted().toArray();
 
         if (sortedArray.length % 2 == 0)
@@ -56,7 +63,8 @@ public class Task1 {
         double result = Math.sqrt(deviation);
         return change(result, 4);
     }
-    static double change(double value, int decimalpoint) {
+    static double change(double value, int decimalpoint)
+    {
         // Using the pow() method
         value = value * Math.pow(10, decimalpoint);
         value = Math.floor(value);
