@@ -1,28 +1,26 @@
 package org.example.HandmanGame;
 
-import javax.swing.*;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-
     private String word;
     private String hiddenWord;
+    private final Scanner scanner;
+    private int randomNumber;
 
-    public Game(String word) {
+    public Game(String word, Scanner scanner, int randomNumber) {
         this.word = word;
+        this.scanner = scanner;
+        this.randomNumber = randomNumber;
     }
 
     public void newGame() {
-        System.out.println("Мы загадали слово, введите предпологаемую букву:");
-        ; // TODO: fix
+        System.out.println(Constants.startGameMassage);
         int mistakes = 0;
-        Scanner scanner = new Scanner(System.in);
-        int random = new Random().nextInt(Constants.words.length);
         this.hiddenWord = this.createHiddenWordFrom(word);
-        this.word = Constants.words[random];
+        this.word = Constants.words[randomNumber];
 
-        while (mistakes < Constants.handMans.length) {
+        while (mistakes < Constants.gallows.length) {
             Character input = scanner.next().charAt(0);
              if (this.word.contains(input.toString())) {
                  System.out.println("ВЫ угадали букву!");
@@ -32,19 +30,19 @@ public class Game {
              }
 
             if (!this.hiddenWord.contains("*")) {
-                System.out.printf("Вы угадали слово: %s! \n", this.word);
+                System.out.printf(Constants.winMassage, this.word);
                 setNewWord();
                 newGame();
             } else {
                 System.out.println(hiddenWord);
             }
 
-            System.out.printf("Ошибок: %s", mistakes);
+            System.out.printf(Constants.mistakes, mistakes);
 
-            if (mistakes < Constants.handMans.length) {
-                System.out.printf(Constants.handMans[mistakes]);
+            if (mistakes < Constants.gallows.length) {
+                System.out.printf(Constants.gallows[mistakes]);
             } else {
-                System.out.printf("Вы не угадали слово и меня уволили с работы, штош, пора открывать резюме на HH снова :( Попробуйте еще раз");
+                System.out.printf(Constants.badEndMassage, this.word);
                 setNewWord();
                 newGame();
             }
@@ -54,7 +52,7 @@ public class Game {
     }
 
     private void setNewWord() {
-        this.word = Constants.words[new Random().nextInt(Constants.words.length)];
+        this.word = Constants.words[randomNumber];
     }
 
     private String transform(char character) {
@@ -72,10 +70,6 @@ public class Game {
     }
 
     private String createHiddenWordFrom(String string) {
-        String str = "";
-        for (int i = 0; i < string.length(); i++) {
-            str += "*";
-        }
-        return str;
+    return "*".repeat(this.word.length());
     }
 }
